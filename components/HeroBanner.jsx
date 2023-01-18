@@ -17,7 +17,7 @@ export const HeroBanner = ({ bannerData }) => {
           className="hero-banner-image"
         />
         <div>
-          <Link href={`/product/${bannerData.slug}`}>
+          <Link href={`/product/${bannerData.product}`}>
             <button>{bannerData.buttonText}</button>
           </Link>
           <div className="desc">
