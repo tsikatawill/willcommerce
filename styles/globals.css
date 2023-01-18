@@ -480,6 +480,14 @@ span.text-red {
   display: flex;
   gap: 30px;
 }
+
+.buttons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
 .buttons .add-to-cart {
   padding: 10px 20px;
   border: 1px solid #f02d34;
