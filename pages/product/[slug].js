@@ -9,33 +9,42 @@ import {
 import { client, urlFor } from "@/lib/client";
 
 import Image from "next/image";
+import { Product } from "@/components";
+import { useState } from "react";
 
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
+  const [index, setIndex] = useState(0);
+
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
             <Image
-              src={urlFor(image[0])}
+              className="product-detail-image"
+              src={urlFor(image[index])}
               width={400}
               height={400}
               alt={product.title}
             />
           </div>
 
-          {/* <div className="small-images-container">
+          <div className="small-images-container">
             {image?.map((item, idx) => (
               <Image
-              key={idx}
-              src={urlFor(item)}
-              width={400}
-              height={400}
-              alt={product.title}
+                key={idx}
+                src={urlFor(item)}
+                width={400}
+                height={400}
+                alt={product.title}
+                className={
+                  idx === index ? "small-image selected-image" : "small-image"
+                }
+                onMouseEnter={() => setIndex(idx)}
               />
             ))}
-          </div> */}
+          </div>
         </div>
 
         <div className="product-detail-desc">
@@ -72,6 +81,17 @@ const ProductDetails = ({ product, products }) => {
             <button className="buy-now">
               Buy now <AiOutlineDollar />
             </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="maylike-products-wrapper">
+        <h2>You may also like</h2>
+        <div className="marquee">
+          <div className="maylike-products-container track">
+            {products.map((item) => (
+              <Product product={item} key={item._id} />
+            ))}
           </div>
         </div>
       </div>
